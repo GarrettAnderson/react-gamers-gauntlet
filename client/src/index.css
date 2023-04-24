@@ -28,14 +28,16 @@ body {
   color: var(--dark);
 }
 
+
 .profile-image-pic{
   height: 300px;
   width: 300px;
   text-align: center;
   align-content: center;
-  margin-left: 130px;
+  margin-left: 170px;
+  border-radius: 50%;
+  position: relative;
 }
-
 
 .col-sm-9 {
     margin-left: 80px;
