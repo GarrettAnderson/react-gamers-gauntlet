@@ -6,13 +6,13 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    score: Int
+    scores: [Score]
   }
 
   type Score {
     _id: ID
     score: Int
-    user_id(id: ID!): User
+    user_id: String
   }
 
   type Auth {
@@ -22,7 +22,8 @@ const typeDefs = gql`
 
   type Query {
     user: User
-    score: Score
+    users: [User]
+    scores: [Score]
   }
 
   type Mutation {
@@ -37,7 +38,9 @@ const typeDefs = gql`
       lastName: String
       email: String
       password: String
+      score: Int
     ): User
+    addScore(userId: ID, score: Int): Score
     login(email: String!, password: String!): Auth
   }
 `;

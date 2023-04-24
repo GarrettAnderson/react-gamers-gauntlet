@@ -1,22 +1,24 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Score } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    users: async (parent, args) => {
+      const users = await User.find();
+      return users;
+    },
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "orders.products",
-          populate: "category",
-        });
-
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
+        const user = await User.findById(context.user._id);
         return user;
       }
 
       throw new AuthenticationError("Not logged in");
+    },
+    scores: async (parent, args, context) => {
+      const score = await Score.find();
+      return score;
     },
   },
   Mutation: {
@@ -34,6 +36,20 @@ const resolvers = {
       }
 
       throw new AuthenticationError("Not logged in");
+    },
+    addScore: async (parent, { score, userId }, context) => {
+      console.log(score);
+      if (userId) {
+        const scoreVal = new Score({ score });
+        console.log(scoreVal);
+        await User.findByIdAndUpdate(userId, {
+          $push: { scores: scoreVal.score },
+        });
+
+        return score;
+      }
+
+      // throw new AuthenticationError("Not logged in");
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
