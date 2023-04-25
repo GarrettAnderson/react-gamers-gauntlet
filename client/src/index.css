@@ -26,6 +26,11 @@ body {
   line-height: 1.5;
   font-size: 16px;
   color: var(--dark);
+  background: url('https://cdn.discordapp.com/attachments/676295815085424645/1100455521716273332/GG-Background.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
 
 
@@ -42,6 +47,7 @@ body {
 .col-sm-9 {
     margin-left: 80px;
 }
+
 
 
 h1,
