@@ -39,7 +39,7 @@ body {
   width: 300px;
   text-align: center;
   align-content: center;
-  margin-left: 170px;
+  /* margin-left: 170px; */
   border-radius: 50%;
   position: relative;
 }
