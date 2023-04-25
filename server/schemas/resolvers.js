@@ -18,7 +18,10 @@ const resolvers = {
       // throw new AuthenticationError("Not logged in");
     },
     scores: async (parent, args, context) => {
-      const score = await Score.find();
+      const score = await Score.find().populate({
+        path: "user_id",
+        model: "User",
+      });
       console.log(score);
       return score;
     },
