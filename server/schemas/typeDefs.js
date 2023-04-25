@@ -3,8 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 type Score {
   _id: ID!
-  score: Float
-  category: String
+  score: Int
   user: User!
 }
 
@@ -13,7 +12,7 @@ type User {
   firstName: String!
   lastName: String!
   email: String!
-  scores: [Score]
+  
 }
 
 type Auth {
