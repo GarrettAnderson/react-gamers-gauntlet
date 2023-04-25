@@ -10,12 +10,12 @@ const resolvers = {
     },
     user: async (parent, args, context) => {
       console.log(context.user);
-      // if (context.user) {
-      const user = await User.findById(args._id);
-      return user;
-      // }
+      if (context.user) {
+        const user = await User.findById(context.user._id);
+        return user;
+      }
 
-      // throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in");
     },
     scores: async (parent, args, context) => {
       const score = await Score.find().populate({
@@ -35,26 +35,20 @@ const resolvers = {
     },
     updateUser: async (parent, args, context) => {
       console.log(context.user);
-      // if (context.user) {
-      return await User.findByIdAndUpdate(args._id, args, {
-        new: true,
-      });
-      // }
+      if (context.user) {
+        return await User.findByIdAndUpdate(context.user._id, args, {
+          new: true,
+        });
+      }
 
-      // throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in");
     },
     addScore: async (parent, { score, userId }, context) => {
       console.log(score, userId);
       const newScore = await Score.create({ score: score, user_id: userId });
-      // if (userId) {
-      // const scoreVal = new Score({ score, user_id: userId });
       console.log(newScore);
-      // await User.findByIdAndUpdate(userId, {
-      //   $push: { scores: newScore },
-      // });
 
       return newScore;
-      // }
 
       // throw new AuthenticationError("Not logged in");
     },
