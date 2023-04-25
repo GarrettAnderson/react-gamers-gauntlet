@@ -59,11 +59,16 @@ const resolvers = {
     updateScore: async (parent, { scoreId, updatedScore }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id);
-        const updated = await user.updateScore(scoreId, updatedScore);
+        const updated = await User.updateScore(scoreId, updatedScore);
         return updated;
       }
 
       throw new AuthenticationError("Not logged in");
+    },
+
+    deleteScore: async (parent, args, context) => {
+      console.log(args);
+      return await Score.findByIdAndDelete(args._id);
     },
 
     login: async (parent, { email, password }) => {
