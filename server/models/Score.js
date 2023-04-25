@@ -6,13 +6,8 @@ const scoreSchema = new Schema({
     type: Number,
     required: true,
   },
-  category: {
-    type: String,
-  },
-  date_created: {
-    type: Date,
-    default: Date.now,
-  },
+  
+  
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
