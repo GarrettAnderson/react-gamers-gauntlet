@@ -21,7 +21,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    user: User
+    user(_id: ID): User
     users: [User]
     scores: [Score]
   }
@@ -34,6 +34,7 @@ const typeDefs = gql`
       password: String!
     ): Auth
     updateUser(
+      _id: ID
       firstName: String
       lastName: String
       email: String
@@ -41,6 +42,7 @@ const typeDefs = gql`
       score: Int
     ): User
     addScore(userId: ID, score: Int): Score
+    deleteScore(_id: ID): Score
     login(email: String!, password: String!): Auth
   }
 `;

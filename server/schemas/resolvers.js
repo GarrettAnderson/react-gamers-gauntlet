@@ -9,15 +9,17 @@ const resolvers = {
       return users;
     },
     user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id);
-        return user;
-      }
+      console.log(context.user);
+      // if (context.user) {
+      const user = await User.findById(args._id);
+      return user;
+      // }
 
-      throw new AuthenticationError("Not logged in");
+      // throw new AuthenticationError("Not logged in");
     },
     scores: async (parent, args, context) => {
       const score = await Score.find();
+      console.log(score);
       return score;
     },
   },
@@ -29,27 +31,33 @@ const resolvers = {
       return { token, user };
     },
     updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, {
-          new: true,
-        });
-      }
-
-      throw new AuthenticationError("Not logged in");
-    },
-    addScore: async (parent, { score, userId }, context) => {
-      console.log(score);
-      if (userId) {
-        const scoreVal = new Score({ score });
-        console.log(scoreVal);
-        await User.findByIdAndUpdate(userId, {
-          $push: { scores: scoreVal.score },
-        });
-
-        return score;
-      }
+      console.log(context.user);
+      // if (context.user) {
+      return await User.findByIdAndUpdate(args._id, args, {
+        new: true,
+      });
+      // }
 
       // throw new AuthenticationError("Not logged in");
+    },
+    addScore: async (parent, { score, userId }, context) => {
+      console.log(score, userId);
+      const newScore = await Score.create({ score: score, user_id: userId });
+      // if (userId) {
+      // const scoreVal = new Score({ score, user_id: userId });
+      console.log(newScore);
+      // await User.findByIdAndUpdate(userId, {
+      //   $push: { scores: newScore },
+      // });
+
+      return newScore;
+      // }
+
+      // throw new AuthenticationError("Not logged in");
+    },
+    deleteScore: async (parent, args, context) => {
+      console.log(args);
+      return await Score.findByIdAndDelete(args._id);
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
