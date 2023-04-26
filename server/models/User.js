@@ -25,7 +25,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  
 });
 
 userSchema.methods.updateScore = async function (scoreId, updatedScore) {

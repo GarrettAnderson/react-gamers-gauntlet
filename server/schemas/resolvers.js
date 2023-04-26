@@ -4,21 +4,27 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    users: async (parent, args) => {
+      const users = await User.find();
+      return users;
+    },
     user: async (parent, args, context) => {
+      console.log(context.user);
       if (context.user) {
-        const user = await User.findById(context.user._id).populate("scores");
+        const user = await User.findById(context.user._id);
         return user;
       }
 
       throw new AuthenticationError("Not logged in");
     },
-    users: async () => {
-      const users = await User.find().populate("scores");
-      return users;
-    },
+
     scores: async (parent, args, context) => {
-      const user = await User.findById(parent.user);
-      return user.scores;
+      const score = await Score.find().populate({
+        path: "user_id",
+        model: "User",
+      });
+      console.log(score);
+      return score;
     },
   },
   Mutation: {
@@ -38,34 +44,15 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
+    addScore: async (parent, { score, userId }, context) => {
+      console.log(score, userId);
+      const newScore = await Score.create({ score: score, user_id: userId });
+      console.log(newScore);
 
-    addScore: async (parent, { score, category, user }, context) => {
-      if (context.user) {
-        const newScore = await Score.create({ score, category, user: context.user._id });
-        const updatedUser = await User.findByIdAndUpdate(
-          user,
-          { $push: { scores: newScore } },
-          { new: true }
-        );
-    
-        console.log(updatedUser);
-    
-        return newScore;
-      }
-    
-      throw new AuthenticationError("Not logged in");
+      return newScore;
+
+      // throw new AuthenticationError("Not logged in");
     },
-
-    updateScore: async (parent, { scoreId, updatedScore }, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id);
-        const updated = await User.updateScore(scoreId, updatedScore);
-        return updated;
-      }
-
-      throw new AuthenticationError("Not logged in");
-    },
-
     deleteScore: async (parent, args, context) => {
       console.log(args);
       return await Score.findByIdAndDelete(args._id);
