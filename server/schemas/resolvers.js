@@ -17,6 +17,7 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
+
     scores: async (parent, args, context) => {
       const score = await Score.find().populate({
         path: "user_id",
@@ -33,8 +34,8 @@ const resolvers = {
 
       return { token, user };
     },
+
     updateUser: async (parent, args, context) => {
-      console.log(context.user);
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
           new: true,
@@ -56,6 +57,7 @@ const resolvers = {
       console.log(args);
       return await Score.findByIdAndDelete(args._id);
     },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

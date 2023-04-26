@@ -25,13 +25,20 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  // scores: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Score",
-  //   },
-  // ],
 });
+
+userSchema.methods.updateScore = async function (scoreId, updatedScore) {
+  const scoreIndex = this.scores.findIndex((score) => score.id === scoreId);
+  if (scoreIndex === -1) {
+    throw new Error("Score not found");
+  }
+
+  const scoreToUpdate = this.scores[scoreIndex];
+  Object.assign(scoreToUpdate, updatedScore);
+  await this.save();
+
+  return scoreToUpdate;
+};
 
 // set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {
