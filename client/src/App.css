@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+    font-size: large;
+}
+
+html {
+    background-color: white;
+    background-image: url(./assets/Abstract-background-white.jpg);
+    animation: bounce 6s ease-in-out alternate infinite;
+}
+
+@keyframes bounce{
+    0% {
+      background-position: top;
+    }
+   100% {
+      background-position: left;
+    }   
+}
+
+.bg-grey {
+    background-color: rgb(128,128,128,.1);
+}
+
+.spacer {
+    height: 1rem;
+}
+
+.spacer2 {
+    height: 2rem;
+}
+
+.spacer3 {
+    height: 3rem;
+}
+
+.spacer4 {
+    height: 4rem;
+}
+
+.page-header {
+    height: 5rem;
+}
+
+.logo-div {
+    width: fit-content;
+}
+
+.mern-logo {
+    width: 5rem;
+}
+
+h1 {
+    height: fit-content;
+    font-weight: 300;
+}
+
+.mern-trivia {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .home-buttons .btn {
+    width: 150px;
+} */
+
+.select-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    width: 150px;
+    margin: 10px;
+}
+
+.btn-exit {
+    background-color: white;
+    color: lightgray;
+    border: 2px solid lightgray;
+}
+
+.btn-exit:hover {
+    color: white;
+}
+
+.btn-blue {
+    background-color: #011598;
+    color: white;
+}
+
+.btn-turq {
+    background-color: #00d8ff;
+    color: white;
+}
+
+.btn-green {
+    background-color: #5fc85b;
+    color: white;
+}
+
+.text-faded {
+    color: gray;
+    font-size: small;
+}
+
+.page-footer {
+    position: relative;
+    bottom: 0;
+    height: 10rem;
+    /* background-color: rgb(125, 125, 125, 0.5); */
+}
+
+/* ----------Tutorial--------------------------------------- */
+
+.welcome {
+    font-size: xx-large;
+    color: gray;
+}
+
+.question {
+    font-size: 2rem;
+    font-weight: 500;
+    color: rgba(1,20,100,255);
+    /* background-color: rgb(128,128,128, .1); */
+    border-bottom: 1px solid;
+}
+
+.text-small {
+    color: gray;
+    font-size: large;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    height: fit-content;
+    min-height: 2rem;
+    vertical-align: text-bottom;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+li:hover {
+    background-color: rgb(128,128,128, .2);
+}
+
+li.correct {
+    background-color: rgba(102,255,0,.9);
+}
+
+li.selected:not(correct) {
+    background-color: rgba(255,50,0,.9);
+}
+
+.disabled {
+    pointer-events: none;
+}
