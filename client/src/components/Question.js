@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import Auth from '../utils/Auth'
 import { UPDATE_USER } from '../utils/mutations'
 import { GET_ME } from '../utils/queries'
 import { useMutation, useQuery } from '@apollo/client'
