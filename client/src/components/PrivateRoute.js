@@ -1,5 +1,5 @@
 import React from "react";
-import Auth from "../utils/Auth";
+import Auth from "../utils/auth";
 import { Navigate } from "react-router-dom";
 
 function PrivateRoute({ children}) {

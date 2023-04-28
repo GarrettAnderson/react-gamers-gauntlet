@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import Reducer from './Reducer'
+import reducer from './Reducer'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-const store = createStore(Reducer)
+const store = createStore(reducer)
 
 ReactDOM.render(
   

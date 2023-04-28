@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Auth from '../utils/Auth';
+import Auth from '../utils/auth'
 import { GET_ME } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 

@@ -6,7 +6,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN_USER } from "../utils/mutations";
 
-import Auth from "../utils/Auth";
+import Auth from "../utils/auth";
 
 const Login = () => {
   const [userFormData, setUserFormData] = useState({ username: "", password: "" });
