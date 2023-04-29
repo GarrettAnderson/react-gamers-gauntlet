@@ -8,6 +8,8 @@ import { LOGIN_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
+import "../assets/css/Login.css";
+
 const Login = () => {
   const [userFormData, setUserFormData] = useState({ username: "", password: "" });
   const [validated] = useState(false);
@@ -50,10 +52,9 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className='spacer'></div>
-      <div className="text-center">Login</div>
-      <Form className="text-center" noValidate validated={validated} onSubmit={handleFormSubmit}>
+    <div className="login">
+      <h1 className="form-header">Login</h1>
+      <Form className="form" noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
@@ -63,8 +64,9 @@ const Login = () => {
           Something went wrong with your login credentials!
         </Alert>
         <Form.Group>
-          <Form.Label className="p-1" htmlFor='username'>Username</Form.Label>
+          <Form.Label className="form-label" htmlFor='username'>Username</Form.Label>
           <Form.Control
+            className="form-input"
             type='text'
             placeholder='Your username'
             name='username'
@@ -72,12 +74,13 @@ const Login = () => {
             value={userFormData.username}
             required
           />
-          <Form.Control.Feedback className="text-faded" type='invalid'>Username is required!</Form.Control.Feedback>
+          <Form.Control.Feedback className="form-input-feedback" type='invalid'>Username is required!</Form.Control.Feedback>
         </Form.Group>
-
+  
         <Form.Group>
-          <Form.Label className="p-1" htmlFor="password">Password</Form.Label>
+          <Form.Label className="form-label" htmlFor="password">Password</Form.Label>
           <Form.Control
+            className="form-input"
             type="password"
             placeholder="Your password"
             name="password"
@@ -85,22 +88,20 @@ const Login = () => {
             value={userFormData.password}
             required
           />
-          <Form.Control.Feedback className="text-faded" type="invalid">
+          <Form.Control.Feedback className="form-input-feedback" type="invalid">
             Password is required!
           </Form.Control.Feedback>
         </Form.Group>
         <Button
-          className="btn-primary"
+          className="form-btn"
           disabled={!(userFormData.username && userFormData.password)}
           type="submit"
           variant="success"
         >
           Submit
         </Button>
-        <div className='spacer'></div>
       </Form>
-    </>
+    </div>
   );
-};
-
+}
 export default Login;
