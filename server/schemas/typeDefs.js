@@ -40,7 +40,7 @@ const typeDefs = gql`
       password: String
       score: Int
     ): User
-    addScore(userId: ID, score: Int): Score
+    addScore(user_id: ID, score: Int): Score
     deleteScore(_id: ID): Score
     login(email: String!, password: String!): Auth
   }

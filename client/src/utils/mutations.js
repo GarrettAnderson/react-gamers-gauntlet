@@ -1,8 +1,18 @@
 import gql from 'graphql-tag';
 
 export const LOGIN_USER = gql`
-mutation loginUser($username: String!, $password: String!) {
-  login(username: $username, password: $password) {
+mutation loginUser(
+  $firstName: String!
+  $lastName: String!
+  $email: String!
+  $password: String!
+) {
+  loginUser(
+    firstName: $firstName
+    lastName: $lastName
+    email: $email
+    password: $password
+  ) {
     token
     user {
       _id
@@ -12,26 +22,50 @@ mutation loginUser($username: String!, $password: String!) {
 `;
 
 export const ADD_USER = gql`
-mutation addUser($username: String!, $password: String!) {
-  addUser(username: $username, password: $password) { 
+mutation addUser(
+  $firstName: String!
+  $lastName: String!
+  $email: String!
+  $password: String!
+) {
+  addUser(
+    firstName: $firstName
+    lastName: $lastName
+    email: $email
+    password: $password
+  ) {
+    token
     user {
       _id
-      username
     }
-    token
   }
 }
 `;
 
 export const UPDATE_USER = gql`
-mutation UpdateUser ($username: String!, $questionsAnswered: Int!, $questionsCorrect: Int!) {
-  updateUser(username: $username, questionsAnswered: $questionsAnswered, questionsCorrect: $questionsCorrect) {
+mutation UpdateUser ($email: String!, $questionsAnswered: Int!, $questionsCorrect: Int!) {
+  updateUser(user: $email, questionsAnswered: $questionsAnswered, questionsCorrect: $questionsCorrect) {
     _id
-    username
+    email: email
     questionsCorrect
     questionsAnswered
     correctPercent
     title
+  }
+}
+`;
+
+export const ADD_SCORE = gql`
+mutation AddScore($score: Int!, $user_id: ID!) {
+  addScore(score: $score, user_id: $user_id) {
+    _id
+    score
+    user_id {
+      _id
+      firstName
+      lastName
+      email
+    }
   }
 }
 `;

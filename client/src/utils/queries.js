@@ -1,14 +1,12 @@
 import gql from 'graphql-tag';
 
-export const GET_ME = gql`
+export const QUERY_USER = gql`
 {
-    me {
+    user {
       _id
-      username
-      questionsAnswered
-      questionsCorrect
-      correctPercent
-      title
+      email
+      firstName
+      lastName
     }
   }
 `;

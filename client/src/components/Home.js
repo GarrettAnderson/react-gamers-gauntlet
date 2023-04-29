@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../utils/auth'
-import { GET_ME } from '../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
 function Home() {
     console.log(Auth.loggedIn());
-    const { loading, data } = useQuery(GET_ME);
-    let userData = data?.me || {};
+    const { loading, data } = useQuery(QUERY_USER);
+    let userData = data?.user|| {};
     console.log(userData);
     const [user, setUser] = useState('');
     const navigate = useNavigate();

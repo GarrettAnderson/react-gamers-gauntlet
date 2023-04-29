@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { UPDATE_USER } from '../utils/mutations'
-import { GET_ME } from '../utils/queries'
+import { ADD_SCORE, UPDATE_USER } from '../utils/mutations'
+import { QUERY_USER } from '../utils/queries'
 import { useMutation, useQuery } from '@apollo/client'
 
 const decodeHTML = function (html) {
@@ -12,13 +12,14 @@ const decodeHTML = function (html) {
 }
 
 function Question() {
-  const { loading, data } = useQuery(GET_ME);
+  const { loading, data } = useQuery(QUERY_USER);
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([])
   const [answerSelected, setAnswerSelected] = useState(false)
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [options, setOptions] = useState([])
-  const score = useSelector((state) => state.score)
+  // const score = useSelector((state) => state.score)
+  const [score, setScore] = useState(0);
   const encodedQuestions = useSelector((state) => state.questions)
 
   const updateUserData = (cache, { data }) => {
@@ -37,8 +38,12 @@ function Question() {
     });
   };
 
-  const [updateUser, { error }] = useMutation(UPDATE_USER, {
-    update: updateUserData
+  // const [updateUser, { error }] = useMutation(UPDATE_USER, {
+  //   update: updateUserData
+  // });
+
+  const [addsScore, {error}] = useMutation(ADD_SCORE, {
+    // update: addsScore
   });
 
   
@@ -62,23 +67,26 @@ function Question() {
   }
 
   const handleFinish = async() => {
-    const userData = data?.me || {};
-    console.log(userData.questionsAnswered);
-    const username = userData.username
-    const newScore = userData.questionsCorrect + score;
-    const newTotal = userData.questionsAnswered + 10;
-    const newPercent = newScore / newTotal * 100; 
-    console.log('newTotal', newTotal);
-    console.log('newScore', newScore);
-    console.log('username', username);
-    console.log('newPercent', newPercent);
+    const userData = data?.user || {};
+    console.log(userData);
+    // const newScore = userData.questionsCorrect + score;
+    // const newTotal = userData.questionsAnswered + 10;
+    // const newPercent = newScore / newTotal * 100; 
+    // const userEmail = userData.email;
+    const userId = userData._id;
+    // const addScore = userData.score;
+    // console.log('newTotal', newTotal);
+    // console.log('newScore', newScore);
+    // console.log('newPercent', newPercent);
 
-    const { updatedData } = await updateUser({
-      variables: { username: username , questionsAnswered: newTotal, questionsCorrect: newScore },
+    const { addedScore } = await addsScore({
+      variables: { user_id: userId, score: score },
     });
-    console.log(updatedData);
+    console.log(addedScore);
 
-    navigate('/final');
+    // if (questions.length === 10) {
+    // navigate('/final'); 
+    // }
   }
 
   useEffect(() => {
@@ -98,10 +106,11 @@ function Question() {
     setAnswerSelected(true)
     setSelectedAnswer(event.target.textContent)
     if (event.target.textContent === answer) {
-      dispatch({
-        type: 'SET_SCORE',
-        score: score + 1,
-      })
+      // dispatch({
+      //   type: 'ADD_SCORE',
+      //   score: score + 1,
+      // })
+      setScore(score + 1000)
     }
     if (questionIndex + 1 <= questions.length) {
       setTimeout(() => {
@@ -129,6 +138,7 @@ function Question() {
     }
   }
   if (!question) {
+    // navigate('/final');
     return <div>Loading</div>
   }
   return (
@@ -144,7 +154,7 @@ function Question() {
         ))}
       </ul>
       <div className='text-small text-right'>
-        Score: {score} / {questions.length}
+        Score: {score} / {questions.length*1000}
       </div>
       <div className='spacer2'></div>
       <div className='text-right'>
