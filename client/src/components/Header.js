@@ -11,7 +11,7 @@ function Header() {
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a
               href="/"
-              className="nav-link text-white"
+              className="nav-link text-black"
               onClick={() => AuthService.logout()}
             >
               Logout
