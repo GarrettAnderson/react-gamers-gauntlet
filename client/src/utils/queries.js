@@ -11,15 +11,15 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_SCORE = gql`
+export const QUERY_SCORES = gql`
   {
-    score {
+    scores {
       _id
       score
       user_id {
-        email
         firstName
         lastName
+        email
       }
     }
   }
