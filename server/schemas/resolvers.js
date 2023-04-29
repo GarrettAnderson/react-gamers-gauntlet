@@ -44,9 +44,9 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    addScore: async (parent, { score, userId }, context) => {
-      console.log(score, userId);
-      const newScore = await Score.create({ score: score, user_id: userId });
+    addScore: async (parent, { score, user_id }, context) => {
+      console.log(score, user_id);
+      const newScore = await Score.create({ score: score, user_id: user_id });
       console.log(newScore);
 
       return newScore;

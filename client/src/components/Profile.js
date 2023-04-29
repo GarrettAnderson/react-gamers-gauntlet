@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GET_ME } from '../utils/queries'
 import { useQuery } from '@apollo/client';
+import { QUERY_USER } from '../utils/queries';
 
 function Profile() {
     const navigate = useNavigate();
-    const { loading, data } = useQuery(GET_ME);
+    const { loading, data } = useQuery(QUERY_USER);
     console.log(data)
-    let userData = data?.me || {};
+    let userData = data?.user || {};
     console.log('userData', userData)
 
     return (
@@ -17,7 +17,7 @@ function Profile() {
             <div className='spacer2'></div>
                 {loading ? (<div>LOADING...</div>)
                 : (<div className='profile-container text-center'>
-                    <h2>{userData.username}</h2>
+                    <h2>{userData.email}</h2>
                     <div className='spacer'></div>
                     <div>{userData.title}</div>
                     <div className='spacer'></div>

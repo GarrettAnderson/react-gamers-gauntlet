@@ -58,14 +58,14 @@ function Signup(props) {
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="firstName" className="form-label">
+                  <label htmlFor="lastName" className="form-label">
                     Last Name
                   </label>
                   <input
                     placeholder="******"
-                    name="firstName"
-                    type="firstName"
-                    id="firstName"
+                    name="lastName"
+                    type="lastName"
+                    id="lastName"
                     className="form-control"
                     onChange={handleChange}
                   />
