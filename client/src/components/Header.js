@@ -23,12 +23,12 @@ function Header() {
       return (
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link to="/signup" className="nav-link text-white">
+            <Link to="/signup" className="nav-link text-black">
               Signup
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/login" className="nav-link text-white">
+            <Link to="/login" className="nav-link text-black">
               Login
             </Link>
           </li>
@@ -44,7 +44,9 @@ function Header() {
                     <img className='mern-logo' src={mernLogo} alt='MERN Logo'></img>
                 </div> */}
         <div className="mern-trivia">
-          <h1 className="m-0">Gamers Gauntlet</h1>
+          <Link to="/" className="navbar-brand m-0">
+            Gamers Gauntlet
+          </Link>
           <div>{showNavigation()}</div>
         </div>
       </div>
