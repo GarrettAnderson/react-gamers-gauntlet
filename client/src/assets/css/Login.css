@@ -1,9 +1,10 @@
 #root{
-    height: 100vh;
-    background-size: auto;
-    padding-top: 50px;
-    background-image: url(../img/GG-Background.png);
-  }
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  padding-top: 50px;
+  background-image: url(../img/GG-Background.png);
+}
   
   .login{
     max-width: 350px;
