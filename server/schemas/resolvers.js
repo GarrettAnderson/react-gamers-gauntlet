@@ -23,7 +23,7 @@ const resolvers = {
         path: "user_id",
         model: "User",
       });
-      console.log(score);
+      console.log("scores: ", score);
       return score;
     },
   },

@@ -7,8 +7,12 @@ import { useMutation, useQuery } from "@apollo/client";
 function FinalScreen() {
   const navigate = useNavigate();
   // const score = useSelector((state) => state.score);
-  const { loading, data } = useQuery(QUERY_SCORES);
-  console.log(data);
+  const { loading, error, data } = useQuery(QUERY_SCORES);
+  console.log(loading);
+  console.log(data ?? []);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
   const score = data.scores[data.scores.length - 1].score;
 
   return (
