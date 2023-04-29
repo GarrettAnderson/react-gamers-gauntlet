@@ -1,71 +1,69 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const LOGIN_USER = gql`
-mutation loginUser(
-  $firstName: String!
-  $lastName: String!
-  $email: String!
-  $password: String!
-) {
-  loginUser(
-    firstName: $firstName
-    lastName: $lastName
-    email: $email
-    password: $password
-  ) {
-    token
-    user {
-      _id
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+      }
     }
   }
-}
 `;
 
 export const ADD_USER = gql`
-mutation addUser(
-  $firstName: String!
-  $lastName: String!
-  $email: String!
-  $password: String!
-) {
-  addUser(
-    firstName: $firstName
-    lastName: $lastName
-    email: $email
-    password: $password
+  mutation addUser(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
   ) {
-    token
-    user {
-      _id
+    addUser(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    ) {
+      token
+      user {
+        _id
+      }
     }
   }
-}
 `;
 
 export const UPDATE_USER = gql`
-mutation UpdateUser ($email: String!, $questionsAnswered: Int!, $questionsCorrect: Int!) {
-  updateUser(user: $email, questionsAnswered: $questionsAnswered, questionsCorrect: $questionsCorrect) {
-    _id
-    email: email
-    questionsCorrect
-    questionsAnswered
-    correctPercent
-    title
+  mutation UpdateUser(
+    $email: String!
+    $questionsAnswered: Int!
+    $questionsCorrect: Int!
+  ) {
+    updateUser(
+      user: $email
+      questionsAnswered: $questionsAnswered
+      questionsCorrect: $questionsCorrect
+    ) {
+      _id
+      email: email
+      questionsCorrect
+      questionsAnswered
+      correctPercent
+      title
+    }
   }
-}
 `;
 
 export const ADD_SCORE = gql`
-mutation AddScore($score: Int!, $user_id: ID!) {
-  addScore(score: $score, user_id: $user_id) {
-    _id
-    score
-    user_id {
+  mutation AddScore($score: Int!, $user_id: ID!) {
+    addScore(score: $score, user_id: $user_id) {
       _id
-      firstName
-      lastName
-      email
+      score
+      user_id {
+        _id
+        firstName
+        lastName
+        email
+      }
     }
   }
-}
 `;

@@ -8,7 +8,7 @@ function FinalScreen() {
   const navigate = useNavigate();
   // const score = useSelector((state) => state.score);
   const { loading, data } = useQuery(QUERY_SCORES);
-  console.log(data.scores[data.scores.length - 1].score);
+  console.log(data);
   const score = data.scores[data.scores.length - 1].score;
 
   return (
