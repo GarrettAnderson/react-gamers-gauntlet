@@ -10,13 +10,18 @@ function Settings(props) {
   const navigate = useNavigate();
   const [options, setOptions] = useState(null);
   const [createOneGame] = useMutation(CREATE_GAME);
-  const { data: getFirstGame } = useQuery(GET_GAMES);
+  const { data: getFirstGame, loading: loadFirstGame } = useQuery(GET_GAMES);
+
+  if (loadFirstGame) {
+    <p>Loading Game...</p>;
+  } else {
+    console.log(getFirstGame);
+  }
   const { data: currentGameById } = useQuery(GET_GAME, {
-    variables: { id: getFirstGame.games[0]._id },
+    // variables: { id: getFirstGame.games[0]._id },
   });
   // const { currentGameId, setCurrentGameId } = useState(getFirstGame.games[0]);
-  console.log(currentGameById);
-  // console.log(currentGameDetail);
+  // console.log(currentGameById.game._id);
   // replace state hooks with useSelector
   const loading = useSelector((state) => state.options.loading);
   const questionCategory = useSelector(
@@ -77,16 +82,20 @@ function Settings(props) {
           </div>
           <div className="spacer2"></div>
           <div className="select-buttons">
-            <button
-              className="btn btn-black"
-              onClick={() => {
-                navigate("/create-game");
-              }}
-            >
-              Add Game
-            </button>
+            {currentGameById ? (
+              ""
+            ) : (
+              <button
+                className="btn btn-black"
+                onClick={() => {
+                  navigate("/create-game");
+                }}
+              >
+                Add Game
+              </button>
+            )}
             {/* Create a game collection on back end when user clicks start  */}
-            <FetchButton text="Start!" setCurrentGame={currentGameById} />
+            <FetchButton text="Start!" />
 
             {/* <button
               className="btn btn-black"

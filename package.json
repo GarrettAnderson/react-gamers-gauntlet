@@ -4,15 +4,19 @@
     "description": "",
     "main": "server/server.js",
     "scripts": {
-      "start": "node server/server.js --ignore client",
-      "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-      "install": "cd server && npm i && cd ../client && npm i",
-      "build": "cd client && npm run build"
+        "start": "node server/server.js --ignore client",
+        "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+        "install": "cd server && npm i && cd ../client && npm i",
+        "build": "cd client && npm run build"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
-      "concurrently": "^5.1.0"
+        "concurrently": "^5.1.0"
+    },
+    "dependencies": {
+        "y-webrtc": "^10.2.5",
+        "yjs": "^13.6.0"
     }
-  }
+}

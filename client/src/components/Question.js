@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { ADD_SCORE, UPDATE_USER } from "../utils/mutations";
 import { QUERY_USER, GET_GAME, GET_GAMES } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
+// import * as Y from "yjs";
+// import { WebrtcProvider } from "y-webrtc";
+// import { WebsocketProvider } from "y-websocket";
+// import { IndexeddbPersistence } from "y-indexeddb";
 
 const decodeHTML = function (html) {
   const txt = document.createElement("textarea");
@@ -12,6 +16,10 @@ const decodeHTML = function (html) {
 };
 
 function Question() {
+  // const ydoc = new Y.Doc();
+  // const provider = new WebrtcProvider(`gamers-gauntlet`, ydoc);
+  // console.log(ydoc._observers);
+  // console.log(provider);
   const { loading, data } = useQuery(QUERY_USER);
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
@@ -21,12 +29,36 @@ function Question() {
   // const score = useSelector((state) => state.score)
   const [score, setScore] = useState(0);
   const encodedQuestions = useSelector((state) => state.questions);
-  const { data: getFirstGame } = useQuery(GET_GAMES);
-  const { data: currentGameById } = useQuery(GET_GAME, {
-    variables: { id: getFirstGame.games[0]._id },
-  });
+  const { loading: loadFirstGame, data: getFirstGame } = useQuery(GET_GAMES);
+  const { data: currentGameById, loading: loadCurrentGameById } = useQuery(
+    GET_GAME,
+    {
+      variables: { id: getFirstGame.games[0]._id },
+    }
+  );
+
   // const { currentGameId, setCurrentGameId } = useState(getFirstGame.games[0]);
-  console.log(currentGameById);
+
+  if (loadCurrentGameById) {
+    <p>Loading Game...</p>;
+  } else {
+    console.log(currentGameById);
+  }
+  const [currentPlayer, setCurrentPlayer] = useState(
+    getFirstGame.games[0].player1
+  );
+  const [nextPlayer, setNextPlayer] = useState(getFirstGame.games[0].player2);
+  const [playerOneScore, setPlayerOneScore] = useState(
+    getFirstGame.games[0].player1Score
+  );
+  const [playerTwoScore, setPlayerTwoScore] = useState(
+    getFirstGame.games[0].player2Score
+  );
+
+  console.log("current player", currentPlayer);
+  console.log("next player", nextPlayer);
+  console.log("player 1 score", playerOneScore);
+  console.log("player 2 score", playerTwoScore);
 
   const updateUserData = (cache, { data }) => {
     console.log("updateUserData hook", data);
@@ -110,26 +142,58 @@ function Question() {
     );
     setOptions(answers);
   }, [question]);
-  const handleListItemClick = (event) => {
+
+  const handlePlayerOneClick = (event) => {
     setAnswerSelected(true);
     setSelectedAnswer(event.target.textContent);
     if (event.target.textContent === answer) {
-      // dispatch({
-      //   type: 'ADD_SCORE',
-      //   score: score + 1,
-      // })
-      setScore(score + 1000);
+      setPlayerOneScore(playerOneScore + 1000);
     }
-    if (questionIndex + 1 <= questions.length) {
-      setTimeout(() => {
-        setAnswerSelected(false);
-        setSelectedAnswer(null);
-        dispatch({
-          type: "SET_INDEX",
-          index: questionIndex + 1,
-        });
-      }, 2500);
+    setNextPlayer(nextPlayer);
+    // if (event.target.textContent === answer) {
+    //   // dispatch({
+    //   //   type: 'ADD_SCORE',
+    //   //   score: score + 1,
+    //   // })
+    //   setScore(score + 1000);
+    // }
+    // if (questionIndex + 1 <= questions.length) {
+    //   // setTimeout(() => {
+    //   setAnswerSelected(false);
+    //   setSelectedAnswer(null);
+    //   dispatch({
+    //     type: "SET_INDEX",
+    //     index: questionIndex + 1,
+    //   });
+    //   // }, 2500);
+    // }
+  };
+
+  const handlePlayerTwoClick = (event) => {
+    // if (currentPlayer) {
+    setAnswerSelected(true);
+    setSelectedAnswer(event.target.textContent);
+    if (event.target.textContent === answer) {
+      setPlayerTwoScore(playerTwoScore + 1000);
     }
+    setCurrentPlayer(currentPlayer);
+    // if (event.target.textContent === answer) {
+    //   // dispatch({
+    //   //   type: 'ADD_SCORE',
+    //   //   score: score + 1,
+    //   // })
+    //   setScore(score + 1000);
+    // }
+    // if (questionIndex + 1 <= questions.length) {
+    //   // setTimeout(() => {
+    //   setAnswerSelected(false);
+    //   setSelectedAnswer(null);
+    //   dispatch({
+    //     type: "SET_INDEX",
+    //     index: questionIndex + 1,
+    //   });
+    //   // }, 2500);
+    // }
   };
 
   const getClass = (option) => {
@@ -137,13 +201,14 @@ function Question() {
       return ``;
     }
     if (option === answer) {
-      return `correct disabled`;
+      return `correct `;
     }
     if (option === selectedAnswer) {
-      return `selected disabled`;
-    } else {
-      return `disabled`;
+      return `selected `;
     }
+    // else {
+    //   return `disabled`;
+    // }
   };
   if (!question) {
     // navigate('/final');
@@ -154,19 +219,36 @@ function Question() {
       <p className="text-small">Question {questionIndex + 1}</p>
       <h3 className="question">{question.question}</h3>
       <div className="spacer"></div>
-      <ul>
-        {options.map((option, i) => (
-          <li
-            key={i}
-            onClick={handleListItemClick}
-            className={getClass(option)}
-          >
-            {option}
-          </li>
-        ))}
-      </ul>
+      {currentPlayer ? (
+        <ul>
+          {options.map((option, i) => (
+            <li
+              key={i}
+              onClick={handlePlayerOneClick}
+              className={getClass(option)}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul>
+          {options.map((option, i) => (
+            <li
+              key={i}
+              onClick={handlePlayerTwoClick}
+              className={getClass(option)}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="text-small text-right">
-        Score: {score} / {questions.length * 1000}
+        Player 1 Score: {playerOneScore} / {questions.length * 1000}
+      </div>
+      <div className="text-small text-right">
+        Player 2 Score: {playerTwoScore} / {questions.length * 1000}
       </div>
       <div className="spacer2"></div>
       <div className="text-right">

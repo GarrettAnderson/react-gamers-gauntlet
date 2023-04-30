@@ -24,12 +24,16 @@ const CreateGame = () => {
   // declare addUser function
   const { addUser } = useMutation(ADD_USER);
   const [createAGame, { loading: loadNewGame }] = useMutation(CREATE_GAME);
-  const { loading, data: usersData } = useQuery(GET_USERS);
-  const { data } = useQuery(QUERY_USER);
+  const { loading: loadUsers, data: usersData } = useQuery(GET_USERS);
+  const { data, loading } = useQuery(QUERY_USER);
   //   const [selectedUser, setSelectedUser] = useState(usersData.users[0].email);
 
-  console.log(data.user);
-  console.log(usersData);
+  if (loading) {
+    <p>Loading Users...</p>;
+  } else {
+    console.log(data.user);
+  }
+  //   console.log(usersData);
 
   //   console.log(getCurrentUser);
 
@@ -184,10 +188,10 @@ const CreateGame = () => {
           <Form.Control
             type="text"
             className="form-input"
-            placeholder={data.user.email}
+            placeholder={loading ? "Loading" : data.user.email}
             name="player1"
             onClick={choosePlayerOne}
-            value={data.user.email}
+            value={loading ? "Loading" : data.user.email}
             required
           />
           <Form.Control.Feedback className="text-faded" type="invalid">
@@ -222,20 +226,22 @@ const CreateGame = () => {
             // onClick={(e) => setSelectedUser(e)}
             onClick={(e) => choosePlayerTwo(e)}
           >
-            {usersData.users.map((userChoice, i) => {
-              return (
-                <option
-                  key={i}
-                  type="text"
-                  //   onClick={(e) => choosePlayerTwo(e)}
-                  placeholder="Choose Player 2"
-                  name="player2"
-                  value={userChoice.email}
-                >
-                  {userChoice.email}
-                </option>
-              );
-            })}
+            {loading
+              ? "loading"
+              : usersData.users.map((userChoice, i) => {
+                  return (
+                    <option
+                      key={i}
+                      type="text"
+                      //   onClick={(e) => choosePlayerTwo(e)}
+                      placeholder="Choose Player 2"
+                      name="player2"
+                      value={userChoice.email}
+                    >
+                      {userChoice.email}
+                    </option>
+                  );
+                })}
           </FormControl>
           {/* <select> */}
           {/* </select> */}

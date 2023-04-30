@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_GAME } from "../utils/mutations";
 
 function FetchButton(props) {
-  console.log(props.setCurrentGame.game);
+  // console.log(props.setCurrentGame.game);
   const navigate = useNavigate();
   const [createOneGame] = useMutation(CREATE_GAME);
   // access the settings that will be used to construct the API query
