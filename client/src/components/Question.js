@@ -187,16 +187,16 @@ function Question() {
     //   // })
     //   setScore(score + 1000);
     // }
-    // if (questionIndex + 1 <= questions.length) {
-    //   // setTimeout(() => {
-    //   setAnswerSelected(false);
-    //   setSelectedAnswer(null);
-    //   dispatch({
-    //     type: "SET_INDEX",
-    //     index: questionIndex + 1,
-    //   });
-    //   // }, 2500);
-    // }
+    if (questionIndex + 1 <= questions.length) {
+      // setTimeout(() => {
+      setAnswerSelected(false);
+      setSelectedAnswer(null);
+      dispatch({
+        type: "SET_INDEX",
+        index: questionIndex + 1,
+      });
+      // }, 1000);
+    }
   };
 
   const getClass = (option) => {
@@ -219,33 +219,42 @@ function Question() {
   }
   return (
     <div className="m-3">
+      {currentPlayer === getFirstGame.games[0].player1 ? (
+        <h1>Player 1 Turn</h1>
+      ) : (
+        <h1>Player 2 Turn</h1>
+      )}
       <p className="text-small">Question {questionIndex + 1}</p>
       <h3 className="question">{question.question}</h3>
       <div className="spacer"></div>
       {currentPlayer === getFirstGame.games[0].player1 ? (
-        <ul>
-          {options.map((option, i) => (
-            <li
-              key={i}
-              onClick={handlePlayerOneClick}
-              className={getClass(option)}
-            >
-              {option}
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul>
+            {options.map((option, i) => (
+              <li
+                key={i}
+                onClick={handlePlayerOneClick}
+                className={getClass(option)}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : (
-        <ul>
-          {options.map((option, i) => (
-            <li
-              key={i}
-              onClick={handlePlayerTwoClick}
-              className={getClass(option)}
-            >
-              {option}
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul>
+            {options.map((option, i) => (
+              <li
+                key={i}
+                onClick={handlePlayerTwoClick}
+                className={getClass(option)}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
       <div className="text-small text-right">
         Player 1 Score: {playerOneScore} / {questions.length * 1000}
