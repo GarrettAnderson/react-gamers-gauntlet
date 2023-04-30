@@ -15,6 +15,7 @@ import Navbar from './components/Navbar';
 import Home from "./components/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import CreateGame from "./pages/CreateGame";
 import QuizSelect from "./components/QuizSelect";
 import Profile from "./components/Profile";
 import NotFound from "./components/NotFound";
@@ -82,6 +83,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/create-game" element={<CreateGame />} />
           <Route path="/quiz" element={<Question />} />
           <Route path="/final" element={<FinalScreen />} />
           <Route

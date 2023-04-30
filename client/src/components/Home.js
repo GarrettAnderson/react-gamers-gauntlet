@@ -30,7 +30,7 @@ function Home() {
               navigate("/select");
             }}
           >
-            Take Quiz
+            Create Game
           </button>
           <div className="spacer5"></div>
           <button

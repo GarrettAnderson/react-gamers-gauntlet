@@ -34,6 +34,13 @@ class AuthService {
     window.location.assign("/");
   }
 
+  userId() {
+    // Saves user token to localStorage
+    const currentUserId = localStorage.getItem("id_token");
+    console.log(currentUserId);
+    return currentUserId;
+  }
+
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.removeItem("id_token");

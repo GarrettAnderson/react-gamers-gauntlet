@@ -67,3 +67,28 @@ export const ADD_SCORE = gql`
     }
   }
 `;
+
+export const CREATE_GAME = gql`
+  mutation addGame(
+    $name: String
+    $player1: String
+    $player2: String
+    $player1Score: Int
+    $player2Score: Int
+  ) {
+    addGame(
+      name: $name
+      player1: $player1
+      player2: $player2
+      player1Score: $player1Score
+      player2Score: $player2Score
+    ) {
+      _id
+      name
+      player1
+      player2
+      player1Score
+      player2Score
+    }
+  }
+`;
