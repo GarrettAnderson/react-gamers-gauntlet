@@ -34,7 +34,10 @@ const resolvers = {
 
       return { token, user };
     },
-
+    addGame: async (parent, args) => {
+      const game = await Game.create();
+      return game;
+    },
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {

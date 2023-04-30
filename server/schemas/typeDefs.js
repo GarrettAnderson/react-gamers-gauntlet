@@ -41,6 +41,7 @@ const typeDefs = gql`
       score: Int
     ): User
     addScore(user_id: ID, score: Int): Score
+    addGame() : Game
     deleteScore(_id: ID): Score
     login(email: String!, password: String!): Auth
   }
