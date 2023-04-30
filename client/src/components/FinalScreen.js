@@ -1,10 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { QUERY_SCORES } from "../utils/queries";
+import { QUERY_SCORES, GET_GAMES, GET_GAME } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 
 function FinalScreen() {
+  const { loading: loadFirstGame, data: getFirstGame } = useQuery(GET_GAMES);
+  const { data: currentGameById, loading: loadCurrentGameById } = useQuery(
+    GET_GAME,
+    {
+      variables: { id: getFirstGame.games[0]._id },
+    }
+  );
+  console.log(currentGameById.game);
+  console.log(getFirstGame);
   const navigate = useNavigate();
   // const score = useSelector((state) => state.score);
   const { loading, error, data } = useQuery(QUERY_SCORES);

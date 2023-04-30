@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import FinalScreen from "./FinalScreen";
 import { ADD_SCORE, UPDATE_USER } from "../utils/mutations";
 import { QUERY_USER, GET_GAME, GET_GAMES } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
@@ -93,6 +94,7 @@ function Question() {
         incorrect_answers: q.incorrect_answers.map((a) => decodeHTML(a)),
       };
     });
+    console.log(decodedQuestions);
     setQuestions(decodedQuestions);
   }, [encodedQuestions]);
   const questionIndex = useSelector((state) => state.index);
@@ -104,25 +106,37 @@ function Question() {
   };
 
   const handleFinish = async () => {
-    const userData = data?.user || {};
-    console.log(userData);
+    console.log("handle Finish");
+    const player1Email = getFirstGame.games[0].player1;
+    const player2Email = getFirstGame.games[0].player2;
+    const player1Score = playerOneScore;
+    const player2Score = playerTwoScore;
+    console.log(player1Email);
+    console.log(player2Email);
+    console.log(data.user);
+    console.log(player1Score);
+    console.log(player2Score);
+    setPlayerOneScore(player1Score);
+    setPlayerTwoScore(player2Score);
+
     // const newScore = userData.questionsCorrect + score;
     // const newTotal = userData.questionsAnswered + 10;
     // const newPercent = newScore / newTotal * 100;
     // const userEmail = userData.email;
-    const userId = userData._id;
+    const userId = data.user._id;
     // const addScore = userData.score;
     // console.log('newTotal', newTotal);
     // console.log('newScore', newScore);
     // console.log('newPercent', newPercent);
 
     const { addedScore } = await addsScore({
-      variables: { user_id: userId, score: score },
+      variables: { user_id: userId, score: player1Score },
     });
-    console.log(addedScore);
+    // console.log(addedScore);
 
     // if (questions.length === 10) {
-    navigate("/final");
+    //   // navigate("/final");
+    //   // <FinalScreen />;
     // }
   };
 
@@ -141,7 +155,7 @@ function Question() {
       question.correct_answer
     );
     setOptions(answers);
-  }, [question]);
+  }, []);
 
   const handlePlayerOneClick = (event) => {
     setAnswerSelected(true);
@@ -213,11 +227,13 @@ function Question() {
     //   return `disabled`;
     // }
   };
-  if (!question) {
-    // navigate('/final');
-    return <div>Loading</div>;
-  }
-  return (
+  // if (!question) {
+  //   // navigate('/final');
+  //   return <div>Loading</div>;
+  // }
+  return !question ? (
+    <FinalScreen />
+  ) : (
     <div className="m-3">
       {currentPlayer === getFirstGame.games[0].player1 ? (
         <h1>Player 1 Turn</h1>
