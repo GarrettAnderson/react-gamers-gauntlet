@@ -9,7 +9,8 @@ import {
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import LoginSignup from "./components/LoginSignup";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import QuizSelect from "./components/QuizSelect";
 import Profile from "./components/Profile";
 import NotFound from "./components/NotFound";
@@ -46,7 +47,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LoginSignup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route
             path="/select"
             element={
