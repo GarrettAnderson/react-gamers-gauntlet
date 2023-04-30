@@ -20,28 +20,30 @@ function Home() {
     <main className="page-main d-flex justify-content-center align-items-center">
       <div className="spacer4"></div>
       {Auth.loggedIn() ? (
-        <div className="text-center welcome">Welcome, {user}!</div>
+        <div>
+          <div className="text-center welcome">Welcome, {user}!</div>
+          <button
+            className="btn btn-blue"
+            onClick={() => {
+              navigate("/select");
+            }}
+          >
+            Take Quiz
+          </button>
+          <button
+            className="btn btn-black"
+            onClick={() => {
+              navigate("/profile");
+            }}
+          >
+            Profile
+          </button>
+        </div>
       ) : (
-        <div className="text-center welcome">Log in to play!</div>
+        <div className="text-center welcome">Sign up/Log in to play!</div>
       )}
       <div className="spacer2"></div>
       <div className="home-buttons m-5">
-        <button
-          className="btn btn-blue"
-          onClick={() => {
-            navigate("/select");
-          }}
-        >
-          Quizzes
-        </button>
-        <button
-          className="btn btn-black"
-          onClick={() => {
-            navigate("/profile");
-          }}
-        >
-          Profile
-        </button>
         {Auth.loggedIn() ? (
           <button className="btn text-white" onClick={Auth.logout}>
             Logout
