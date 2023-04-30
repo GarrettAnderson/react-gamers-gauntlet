@@ -95,9 +95,16 @@ nav {
 }
 
 .spacer4 {
-    height: 4rem;
+    height: 2rem;
 }
 
+.spacer5 {
+    height: 1rem;
+}
+
+.spacer6 {
+    height: 2rem;
+}
 .page-header {
     height: 2rem;
 }
@@ -112,22 +119,28 @@ h1 {
     font-weight: 300;
 }
 
-/* .mern-trivia {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-} */
+.text-center.welcome {
+    font-family: 'Sigmar', cursive;
+    font-size: xx-large;
+    text-align: center;
+    color: white;
+}
+
+.gamers-gauntlet-logo {
+    display: block;
+    margin: auto;
+  }
+
+  .card-title {
+    font-family: 'Sigmar', cursive;
+    font-size: small;
+    text-align: center;
+  }
 
 .home-buttons {
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
 }
-
-
-/* .home-buttons .btn {
-    width: 150px;
-} */
 
 .select-buttons {
     display: flex;
@@ -154,6 +167,27 @@ h1 {
     background-color: #011598;
     color: white;
 }
+button.text-center.btn.btn-blue {
+    display: block;
+    margin: auto;
+    background-color: #011598;
+    color: white;
+}
+
+button.text-center.btn.btn-black {
+    display: block;
+    margin: auto;
+    background-color: black;
+    color: white;
+}
+
+button.text-center.btn.text-home {
+    display: block;
+    margin: auto;
+    background-color: black;
+    color: white;
+}
+
 
 .btn-turq {
     background-color: #00d8ff;

@@ -19,20 +19,25 @@ function Home() {
 
   return (
     <main className="page-main">
+              <div>
+        <img src="https://cdn.discordapp.com/attachments/1077746194073264211/1098067570835337257/Gamers_gauntlet_3.png" alt="Gamers Gauntlet" className="gamers-gauntlet-logo" />
+        </div>
       <div className="spacer4"></div>
       {Auth.loggedIn() ? (
         <div>
           <div className="text-center welcome">Welcome {user}!</div>
+          <div className="spacer6"></div>
           <button
-            className="btn btn-blue"
+            className="text-center btn btn-blue"
             onClick={() => {
               navigate("/select");
             }}
           >
             Take Quiz
           </button>
+          <div className="spacer5"></div>
           <button
-            className="btn btn-black"
+            className="text-center btn btn-black"
             onClick={() => {
               navigate("/profile");
             }}
