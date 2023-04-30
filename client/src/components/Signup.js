@@ -61,9 +61,9 @@ const Signup = () => {
   return (
     <div className='bg-grey'>
         <div className='spacer'></div>
-        <div className='text-center'>Signup</div>
+        <div className='signup-text' style={{ color: 'white' }}>Signup</div>
       {/* This is needed for the validation functionality above */}
-      <Form className='text-center' noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form className='signup-text' noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your signup!
