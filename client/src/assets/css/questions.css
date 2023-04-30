@@ -4,7 +4,8 @@
   
   .text-small {
     font-size: 0.875rem;
-    color:rgb(186, 137, 233);
+    /* color:rgb(186, 137, 233); */
+    color:rgb(202, 71, 39);
   }
   
   .question {
@@ -28,7 +29,8 @@
     border: 1px solid gray;
     margin-bottom: 0.5rem;
     cursor: pointer;
-    color:rgb(228, 90, 136);
+    /* color:rgb(202, 71, 39); */
+    color:rgb(186, 137, 233);
   }
   
   li.selected {
