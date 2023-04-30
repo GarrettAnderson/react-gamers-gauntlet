@@ -40,7 +40,7 @@ body {
 html {
     /* background-color: white; */
     background-image: url(./assets/img/AdobeStock_269814969.jpeg);
-    animation: bounce 150s ease-in-out alternate infinite;
+    animation: bounce 130s ease-in-out alternate infinite;
 }
 
 @keyframes bounce{
@@ -110,6 +110,10 @@ nav {
 h1 {
     height: fit-content;
     font-weight: 300;
+}
+
+h2.text-center {
+    color: red;
 }
 
 .text-center.welcome {
