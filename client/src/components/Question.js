@@ -5,6 +5,7 @@ import { ADD_SCORE, UPDATE_USER } from "../utils/mutations";
 import { QUERY_USER } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 
+
 const decodeHTML = function (html) {
   const txt = document.createElement("textarea");
   txt.innerHTML = html;

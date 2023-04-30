@@ -4,6 +4,7 @@ import Auth from "../utils/auth";
 import { QUERY_USER } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
+
 function Home() {
   console.log(Auth.loggedIn());
   const { loading, data } = useQuery(QUERY_USER);
@@ -17,11 +18,11 @@ function Home() {
   }, [userData]);
 
   return (
-    <main className="page-main d-flex justify-content-center align-items-center">
+    <main className="page-main">
       <div className="spacer4"></div>
       {Auth.loggedIn() ? (
         <div>
-          <div className="text-center welcome">Welcome, {user}!</div>
+          <div className="text-center welcome">Welcome {user}!</div>
           <button
             className="btn btn-blue"
             onClick={() => {
@@ -40,10 +41,12 @@ function Home() {
           </button>
         </div>
       ) : (
-        <div className="text-center welcome">Sign up/Log in to play!</div>
+        <div>
+        <img src="https://cdn.discordapp.com/attachments/1077746194073264211/1098067570835337257/Gamers_gauntlet_3.png" alt="Gamers Gauntlet" className="gamers-gauntlet-logo" />
+        </div>
       )}
       <div className="spacer2"></div>
-      <div className="home-buttons m-5">
+      <div className="home-buttons d-flex justify-content-center align-items-center">
         {Auth.loggedIn() ? (
           <button className="btn text-white" onClick={Auth.logout}>
             Logout
