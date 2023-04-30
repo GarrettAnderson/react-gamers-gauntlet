@@ -40,8 +40,8 @@ function Signup(props) {
               <h2 className="text-center">Signup</h2>
             </div>
             <div style={{ textAlign: "center" }}>
-              <img src="https://cdn.discordapp.com/attachments/1077746194073264211/1098067570835337257/Gamers_gauntlet_3.png" alt="Gamers Gauntlet" className="profile-image-pic" />
-            </div>
+              <img src="https://cdn.discordapp.com/attachments/1077746194073264211/1098067570835337257/Gamers_gauntlet_3.png" alt="Gamers Gauntlet" className="gamers-gauntlet-logo" />
+            </div>        
             <div className="card-body">
               <form onSubmit={handleFormSubmit}>
                 <div className="mb-3">
