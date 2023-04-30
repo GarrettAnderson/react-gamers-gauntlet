@@ -7,7 +7,6 @@ import { QUERY_USER, GET_GAME, GET_GAMES } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import "../assets/css/questions.css";
 
-
 const decodeHTML = function (html) {
   const txt = document.createElement("textarea");
   txt.innerHTML = html;
@@ -233,6 +232,8 @@ function Question() {
     <FinalScreen
       playerOneScore={playerOneScore}
       playerTwoScore={playerTwoScore}
+      getFirstGame={getFirstGame}
+      getCurrentGameById={currentGameById}
     />
   ) : (
     <div className="m-3">
