@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { QUERY_SCORES } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
-
+import "../assets/css/final.css";
 function FinalScreen() {
   const navigate = useNavigate();
   // const score = useSelector((state) => state.score);
@@ -18,14 +18,14 @@ function FinalScreen() {
   return (
     <div className="d-flex flex-column">
       <div className="spacer2"></div>
-      <h3 className="text-center">Final Score: {score}</h3>
+      <h3 className="text-center score">Final Score: <span className="score-number">{score}!</span></h3>
       <div className="spacer2"></div>
       <div className="select-buttons">
         <button
           onClick={() => {
             navigate("/profile");
           }}
-          className="btn"
+          className="btn profile"
         >
           Profile
         </button>
@@ -33,7 +33,7 @@ function FinalScreen() {
           onClick={() => {
             navigate("/");
           }}
-          className="btn"
+          className="btn home"
         >
           Home
         </button>

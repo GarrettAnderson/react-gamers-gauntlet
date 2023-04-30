@@ -1,0 +1,65 @@
+.m-3 {
+    margin: 1rem;
+  }
+  
+  .text-small {
+    font-size: 0.875rem;
+    color:rgb(186, 137, 233);
+  }
+  
+  .question {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(0, 255, 255, 0.918);
+  }
+  
+  .spacer {
+    height: 1rem;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    padding: 0.5rem;
+    border: 1px solid gray;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    color:rgb(228, 90, 136);
+  }
+  
+  li.selected {
+    background-color: lightblue;
+  }
+  
+  li.correct {
+    background-color: lightgreen;
+  }
+  
+  li.incorrect {
+    background-color: pink;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  
+  .btn {
+    display: inline-block;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-exit {
+    background-color: gray;
+    color: white;
+  }
+  
+  .spacer2 {
+    height: 2rem;
+  }
