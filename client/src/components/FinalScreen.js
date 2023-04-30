@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { QUERY_SCORES, GET_GAMES, GET_GAME } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 
-function FinalScreen() {
+function FinalScreen(props) {
   const { loading: loadFirstGame, data: getFirstGame } = useQuery(GET_GAMES);
   const { data: currentGameById, loading: loadCurrentGameById } = useQuery(
     GET_GAME,
@@ -27,7 +27,8 @@ function FinalScreen() {
   return (
     <div className="d-flex flex-column">
       <div className="spacer2"></div>
-      <h3 className="text-center">Final Score: {score}</h3>
+      <h3 className="text-center">Player 1 Score: {props.playerOneScore}</h3>
+      <h3 className="text-center">Player 2 Score: {props.playerTwoScore}</h3>
       <div className="spacer2"></div>
       <div className="select-buttons">
         <button

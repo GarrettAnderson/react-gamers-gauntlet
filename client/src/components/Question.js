@@ -232,7 +232,10 @@ function Question() {
   //   return <div>Loading</div>;
   // }
   return !question ? (
-    <FinalScreen />
+    <FinalScreen
+      playerOneScore={playerOneScore}
+      playerTwoScore={playerTwoScore}
+    />
   ) : (
     <div className="m-3">
       {currentPlayer === getFirstGame.games[0].player1 ? (
