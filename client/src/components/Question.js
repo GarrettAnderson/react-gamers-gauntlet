@@ -55,8 +55,8 @@ function Question() {
     getFirstGame.games[0].player2Score
   );
 
-  console.log("current player", currentPlayer);
-  console.log("next player", nextPlayer);
+  console.log("starting current player", currentPlayer);
+  console.log("starting next player", nextPlayer);
   console.log("player 1 score", playerOneScore);
   console.log("player 2 score", playerTwoScore);
 
@@ -149,7 +149,9 @@ function Question() {
     if (event.target.textContent === answer) {
       setPlayerOneScore(playerOneScore + 1000);
     }
-    setNextPlayer(nextPlayer);
+    console.log("player 1 choice");
+    setCurrentPlayer(getFirstGame.games[0].player2);
+    console.log("next player", currentPlayer);
     // if (event.target.textContent === answer) {
     //   // dispatch({
     //   //   type: 'ADD_SCORE',
@@ -176,7 +178,8 @@ function Question() {
     if (event.target.textContent === answer) {
       setPlayerTwoScore(playerTwoScore + 1000);
     }
-    setCurrentPlayer(currentPlayer);
+    console.log("player 2 choice");
+    setCurrentPlayer(getFirstGame.games[0].player1);
     // if (event.target.textContent === answer) {
     //   // dispatch({
     //   //   type: 'ADD_SCORE',
@@ -219,7 +222,7 @@ function Question() {
       <p className="text-small">Question {questionIndex + 1}</p>
       <h3 className="question">{question.question}</h3>
       <div className="spacer"></div>
-      {currentPlayer ? (
+      {currentPlayer === getFirstGame.games[0].player1 ? (
         <ul>
           {options.map((option, i) => (
             <li
