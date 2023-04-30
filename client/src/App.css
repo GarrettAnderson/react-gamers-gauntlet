@@ -71,13 +71,6 @@ nav {
     margin: auto;
   }
   
-/*   
-  .bg-dark {
-    margin: 10;
-    padding: 10;
-    background-color: #343a40;
-    color: #f8f9fa;
-  } */
 .bg-grey {
     background-color: rgb(128,128,128,.1);
 }
@@ -170,7 +163,7 @@ h1 {
 button.text-center.btn.btn-blue {
     display: block;
     margin: auto;
-    background-color: #011598;
+    background-color: rgb(202, 71, 39);
     color: white;
 }
 
