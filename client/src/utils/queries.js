@@ -17,6 +17,7 @@ export const QUERY_SCORES = gql`
       _id
       score
       user_id {
+        _id
         firstName
         lastName
         email
