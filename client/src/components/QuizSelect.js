@@ -62,6 +62,7 @@ function Settings() {
           <div className="spacer2"></div>
           <div className="select-buttons">
             <FetchButton text="Start!" />
+            <div className="spacer4"></div>
             <button
               className="btn btn-black"
               onClick={() => {
