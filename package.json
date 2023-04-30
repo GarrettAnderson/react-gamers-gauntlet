@@ -16,7 +16,6 @@
         "concurrently": "^5.1.0"
     },
     "dependencies": {
-        "y-webrtc": "^10.2.5",
-        "yjs": "^13.6.0"
+        "react-router-dom": "^6.11.0"
     }
 }

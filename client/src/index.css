@@ -938,9 +938,9 @@ a:hover {
   background-color: #d9e9e8 !important;
 }
 
-.bg-dark {
+/* .bg-dark {
   background-color: #1a1a1a !important;
-}
+} */
 
 .bg-white {
   background-color: #ffffff !important;
@@ -1086,6 +1086,16 @@ a:hover {
   background-color: #31a9e1;
 }
 
+.btn.btn-primary {
+  background-color: rgb(202, 71, 39);
+  color: #ffffff;
+}
+
+
+h2.text-center{
+  color: rgba(250, 250, 250, 0.918);
+}
+
 .card {
   border: 1px solid #1a1a1a;
   margin-bottom: 1rem;
@@ -1095,7 +1105,7 @@ a:hover {
 
 .card .card-header {
   padding: 0.5rem;
-  background-color: #2d3e50;
+  background-color: rgb(45, 85, 166);
   color: #d9e9e8;
 }
 

@@ -6,10 +6,41 @@
     font-size: large;
 }
 
+/* Styles for screens smaller than 480px */
+@media (max-width: 480px) {
+    /* Change the layout from two columns to one column */
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Adjust margins and padding to optimize for smaller screens */
+    .section {
+      margin: 10px 0;
+      padding: 10px;
+    }
+    
+    /* Reduce font sizes for better legibility on smaller screens */
+    h1 {
+      font-size: 24px;
+    }
+    
+    p {
+      font-size: 16px;
+    }
+  }
+  
+
+body {
+    margin: 0;
+    background-color: transparent;
+    transition: background-color 0.5s ease;
+  }
+
 html {
-    background-color: white;
-    background-image: url(./assets/Abstract-background-white.jpg);
-    animation: bounce 6s ease-in-out alternate infinite;
+    /* background-color: white; */
+    background-image: url(./assets/img/AdobeStock_269814969.jpeg);
+    animation: bounce 130s ease-in-out alternate infinite;
 }
 
 @keyframes bounce{
@@ -21,6 +52,25 @@ html {
     }   
 }
 
+nav {
+    margin: 10;
+    padding: 10;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
+.custom-font {
+    font-family: 'Sigmar', cursive;
+  }
+
+.navbar-nav > li > a {
+    font-size: medium;
+}
+
+.gamers-gauntlet-logo {
+    display: block;
+    margin: auto;
+  }
+  
 .bg-grey {
     background-color: rgb(128,128,128,.1);
 }
@@ -38,41 +88,61 @@ html {
 }
 
 .spacer4 {
-    height: 4rem;
+    height: 2rem;
 }
 
+.spacer5 {
+    height: 1rem;
+}
+
+.spacer6 {
+    height: 2rem;
+}
 .page-header {
-    height: 5rem;
+    height: 2rem;
 }
 
 .logo-div {
     width: fit-content;
 }
 
-.mern-logo {
-    width: 5rem;
-}
 
 h1 {
     height: fit-content;
     font-weight: 300;
 }
 
-.mern-trivia {
-    width: fit-content;
-    display: flex;
-    align-items: center;
+/* p {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}   */
+
+.text-center.welcome {
+    font-family: 'Sigmar', cursive;
+    font-size: xx-large;
+    text-align: center;
+    color: white;
 }
+
+.gamers-gauntlet-logo {
+    display: block;
+    margin: auto;
+  }
+
+  .card-title {
+    font-family: 'Sigmar', cursive;
+    font-size: small;
+    text-align: center;
+  }
 
 .home-buttons {
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
-
-/* .home-buttons .btn {
-    width: 150px;
-} */
 
 .select-buttons {
     display: flex;
@@ -96,9 +166,30 @@ h1 {
 }
 
 .btn-blue {
-    background-color: #011598;
+    background-color: #00d8ff;
     color: white;
 }
+button.text-center.btn.btn-blue {
+    display: block;
+    margin: auto;
+    background-color: rgb(202, 71, 39);
+    color: white;
+}
+
+button.text-center.btn.btn-black {
+    display: block;
+    margin: auto;
+    background-color: black;
+    color: white;
+}
+
+button.text-center.btn.text-home {
+    display: block;
+    margin: auto;
+    background-color: black;
+    color: white;
+}
+
 
 .btn-turq {
     background-color: #00d8ff;
@@ -114,13 +205,13 @@ h1 {
     color: gray;
     font-size: small;
 }
-
+/* 
 .page-footer {
     position: relative;
     bottom: 0;
-    height: 10rem;
+    height: 10rem; */
     /* background-color: rgb(125, 125, 125, 0.5); */
-}
+/* } */
 
 /* ----------Tutorial--------------------------------------- */
 

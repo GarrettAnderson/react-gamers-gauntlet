@@ -6,7 +6,9 @@ import { GET_GAMES, GET_GAME } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import FetchButton from "./FetchButton";
 
+
 function Settings(props) {
+
   const navigate = useNavigate();
   const [options, setOptions] = useState(null);
   const [createOneGame] = useMutation(CREATE_GAME);
@@ -96,6 +98,7 @@ function Settings(props) {
             )}
             {/* Create a game collection on back end when user clicks start  */}
             <FetchButton text="Start!" />
+
 
             {/* <button
               className="btn btn-black"

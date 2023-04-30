@@ -14,18 +14,47 @@ Whether you're a seasoned gamer or just getting started, Gamers Gauntlet is the 
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributors](#contributing)
+- [Contributors](#contributors)
 - [License](#license)
 - [Questions](#questions)
 
 ## Installation
 
+1. Make sure you have Node.js and npm installed on your system. You can download them from:
+   ```
+    https://nodejs.org/en/download
+   ```
+2. Clone this repository by running the following command in your terminal:
+    ```
+    git clone https://github.com/your-username/gamers-gauntlet.git
+   ```
+3. Navigate to the project directory:
+   ```
+    cd gamers-gauntlet
+   ```
+4. Install all dependencies by running:
+   ```
+    npm install
+   ```
+
 
 ## Usage
 
+1. To start the application, run:
+```
+npm run develop
+```
+2. Open your web browser and navigate to http://localhost:3000 to view the application.
+
+3. You can now use the application to play your favorite trivia game!
 
 
-## Contributing
+## Contributors
+
+[Garret Anderson](https://github.com/GarrettAnderson)
+[Shemar Boyd](https://github.com/marii9)
+[Courtney Gochenour](https://github.com/CourtneyGoch)
+[Thomas Bailey](https://github.com/tjb47-dev)
 
 
 ## License

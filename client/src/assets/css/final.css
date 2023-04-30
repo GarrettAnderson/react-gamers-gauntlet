@@ -1,0 +1,64 @@
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.spacer2 {
+  height: 2rem;
+}
+
+.text-center {
+  text-align: center;
+  color: rgba(0, 255, 255, 0.918);
+}
+
+.select-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.btn:hover {
+  background-color: gray;
+  color: white;
+}
+
+.score {
+  color: rgb(186, 137, 233);
+}
+
+.score-number {
+  color: rgb(0, 255, 242);
+  font-size: 2rem;
+}
+
+.btn:hover {
+  background-color: gray;
+  color: white;
+}
+
+.profile,
+.home {
+  background-color: transparent;
+  box-shadow: 0 0 0.5rem gray;
+  color: white;
+}
+
+.profile:hover,
+.home:hover {
+  background-color: gray;
+  color: white;
+}

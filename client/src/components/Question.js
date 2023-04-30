@@ -5,10 +5,8 @@ import FinalScreen from "./FinalScreen";
 import { ADD_SCORE, UPDATE_USER } from "../utils/mutations";
 import { QUERY_USER, GET_GAME, GET_GAMES } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
-// import * as Y from "yjs";
-// import { WebrtcProvider } from "y-webrtc";
-// import { WebsocketProvider } from "y-websocket";
-// import { IndexeddbPersistence } from "y-indexeddb";
+import "../assets/css/questions.css";
+
 
 const decodeHTML = function (html) {
   const txt = document.createElement("textarea");
