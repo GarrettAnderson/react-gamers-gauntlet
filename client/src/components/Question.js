@@ -5,6 +5,8 @@ import { ADD_SCORE, UPDATE_USER } from "../utils/mutations";
 import { QUERY_USER } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import "../assets/css/questions.css";
+// import timer
+import CountdownTimer from './CountdownTimer';
 
 const decodeHTML = function (html) {
   const txt = document.createElement("textarea");
@@ -146,6 +148,9 @@ function Question() {
   }
   return (
     <div className="m-3">
+      <div>
+        <CountdownTimer className="timer-button" />
+      </div>
       <p className="text-small">Question {questionIndex + 1}</p>
       <h3 className="question">{question.question}</h3>
       <div className="spacer"></div>

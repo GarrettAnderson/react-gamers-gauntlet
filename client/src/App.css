@@ -112,9 +112,14 @@ h1 {
     font-weight: 300;
 }
 
-h2.text-center {
-    color: red;
-}
+p {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}  
 
 .text-center.welcome {
     font-family: 'Sigmar', cursive;
