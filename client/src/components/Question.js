@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ADD_SCORE, UPDATE_USER } from "../utils/mutations";
-import { QUERY_USER } from "../utils/queries";
+import { QUERY_USER, GET_GAME, GET_GAMES } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 
 const decodeHTML = function (html) {
@@ -21,6 +21,12 @@ function Question() {
   // const score = useSelector((state) => state.score)
   const [score, setScore] = useState(0);
   const encodedQuestions = useSelector((state) => state.questions);
+  const { data: getFirstGame } = useQuery(GET_GAMES);
+  const { data: currentGameById } = useQuery(GET_GAME, {
+    variables: { id: getFirstGame.games[0]._id },
+  });
+  // const { currentGameId, setCurrentGameId } = useState(getFirstGame.games[0]);
+  console.log(currentGameById);
 
   const updateUserData = (cache, { data }) => {
     console.log("updateUserData hook", data);

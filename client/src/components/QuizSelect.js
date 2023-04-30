@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { CREATE_GAME } from "../utils/mutations";
+import { GET_GAMES, GET_GAME } from "../utils/queries";
+import { useMutation, useQuery } from "@apollo/client";
 import FetchButton from "./FetchButton";
 
-function Settings() {
+function Settings(props) {
   const navigate = useNavigate();
   const [options, setOptions] = useState(null);
+  const [createOneGame] = useMutation(CREATE_GAME);
+  const { data: getFirstGame } = useQuery(GET_GAMES);
+  const { data: currentGameById } = useQuery(GET_GAME, {
+    variables: { id: getFirstGame.games[0]._id },
+  });
+  // const { currentGameId, setCurrentGameId } = useState(getFirstGame.games[0]);
+  console.log(currentGameById);
+  // console.log(currentGameDetail);
   // replace state hooks with useSelector
   const loading = useSelector((state) => state.options.loading);
   const questionCategory = useSelector(
@@ -14,6 +25,7 @@ function Settings() {
 
   // defining to dispatch the actions
   const dispatch = useDispatch();
+
   useEffect(() => {
     const apiUrl = `https://opentdb.com/api_category.php`;
     const handleLoadingChange = (value) => {
@@ -22,6 +34,7 @@ function Settings() {
         loading: value,
       });
     };
+
     handleLoadingChange(true);
     fetch(apiUrl)
       .then((res) => res.json())
@@ -36,6 +49,10 @@ function Settings() {
       type: "CHANGE_CATEGORY",
       value: event.target.value,
     });
+  };
+
+  const getCurrentGame = (event) => {
+    console.log("get current game");
   };
   if (!loading) {
     return (
@@ -60,15 +77,25 @@ function Settings() {
           </div>
           <div className="spacer2"></div>
           <div className="select-buttons">
-            <FetchButton text="Start!" />
             <button
+              className="btn btn-black"
+              onClick={() => {
+                navigate("/create-game");
+              }}
+            >
+              Add Game
+            </button>
+            {/* Create a game collection on back end when user clicks start  */}
+            <FetchButton text="Start!" setCurrentGame={currentGameById} />
+
+            {/* <button
               className="btn btn-black"
               onClick={() => {
                 navigate("/signup");
               }}
             >
               Add Another Player
-            </button>
+            </button> */}
             <button
               onClick={() => {
                 navigate("/");

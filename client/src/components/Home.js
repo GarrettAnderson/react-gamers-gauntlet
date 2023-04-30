@@ -28,7 +28,7 @@ function Home() {
               navigate("/select");
             }}
           >
-            Take Quiz
+            Create Game
           </button>
           <button
             className="btn btn-black"
