@@ -14,7 +14,7 @@ Whether you're a seasoned gamer or just getting started, Gamers Gauntlet is the 
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributors](#contributing)
+- [Contributors](#contributors)
 - [License](#license)
 - [Questions](#questions)
 
@@ -25,7 +25,12 @@ Whether you're a seasoned gamer or just getting started, Gamers Gauntlet is the 
 
 
 
-## Contributing
+## Contributors
+
+[Garret Anderson](https://github.com/GarrettAnderson)
+[Shemar Boyd](https://github.com/marii9)
+[Courtney Gochenour](https://github.com/CourtneyGoch)
+[Thomas Bailey](https://github.com/tjb47-dev)
 
 
 ## License
