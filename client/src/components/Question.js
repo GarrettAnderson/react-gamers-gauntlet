@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ADD_SCORE, UPDATE_USER } from "../utils/mutations";
 import { QUERY_USER } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
-
+import "../assets/css/questions.css";
 
 const decodeHTML = function (html) {
   const txt = document.createElement("textarea");
