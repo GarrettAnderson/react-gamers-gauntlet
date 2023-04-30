@@ -38,6 +38,15 @@ function Profile() {
           <br />
           Correct Answers: {userData.correctPercent}%
         </p>
+        <div className="spacer"></div>
+          <h3>Quiz Scores:</h3>
+          <ul>
+            {userScores.map((score) => (
+              <li key={score.id}>
+                {score.quizName}: {score.score}
+              </li>
+            ))}
+            </ul>
         <button
         className="text-center btn btn text-home"
         onClick={() => {
