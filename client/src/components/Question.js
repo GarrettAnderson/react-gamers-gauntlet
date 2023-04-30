@@ -155,7 +155,7 @@ function Question() {
       question.correct_answer
     );
     setOptions(answers);
-  }, []);
+  }, [question]);
 
   const handlePlayerOneClick = (event) => {
     setAnswerSelected(true);
