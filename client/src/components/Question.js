@@ -50,7 +50,7 @@ function Question() {
   );
   const player1Email = getFirstGame.games[0].player1;
   const player2Email = getFirstGame.games[0].player2;
-
+  console.log(player1Email);
   console.log("starting current player", currentPlayer);
   console.log("starting next player", nextPlayer);
   console.log("player 1 score", playerOneScore);
