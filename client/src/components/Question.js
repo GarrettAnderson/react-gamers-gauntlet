@@ -7,7 +7,6 @@ import { QUERY_USER, GET_GAME, GET_GAMES } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import "../assets/css/questions.css";
 
-
 const decodeHTML = function (html) {
   const txt = document.createElement("textarea");
   txt.innerHTML = html;
@@ -15,10 +14,6 @@ const decodeHTML = function (html) {
 };
 
 function Question() {
-  // const ydoc = new Y.Doc();
-  // const provider = new WebrtcProvider(`gamers-gauntlet`, ydoc);
-  // console.log(ydoc._observers);
-  // console.log(provider);
   const { loading, data } = useQuery(QUERY_USER);
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
@@ -53,7 +48,9 @@ function Question() {
   const [playerTwoScore, setPlayerTwoScore] = useState(
     getFirstGame.games[0].player2Score
   );
-
+  const player1Email = getFirstGame.games[0].player1;
+  const player2Email = getFirstGame.games[0].player2;
+  console.log(player1Email);
   console.log("starting current player", currentPlayer);
   console.log("starting next player", nextPlayer);
   console.log("player 1 score", playerOneScore);
@@ -105,8 +102,8 @@ function Question() {
 
   const handleFinish = async () => {
     console.log("handle Finish");
-    const player1Email = getFirstGame.games[0].player1;
-    const player2Email = getFirstGame.games[0].player2;
+    // const player1Email = getFirstGame.games[0].player1;
+    // const player2Email = getFirstGame.games[0].player2;
     const player1Score = playerOneScore;
     const player2Score = playerTwoScore;
     console.log(player1Email);
@@ -231,15 +228,19 @@ function Question() {
   // }
   return !question ? (
     <FinalScreen
+      player1Email={player1Email}
+      player2Email={player2Email}
       playerOneScore={playerOneScore}
       playerTwoScore={playerTwoScore}
+      getFirstGame={getFirstGame}
+      getCurrentGameById={currentGameById}
     />
   ) : (
     <div className="m-3">
       {currentPlayer === getFirstGame.games[0].player1 ? (
-        <h1>Player 1 Turn</h1>
+        <h1 className="question">Player 1 Turn</h1>
       ) : (
-        <h1>Player 2 Turn</h1>
+        <h1 className="question">Player 2 Turn</h1>
       )}
       <p className="text-small">Question {questionIndex + 1}</p>
       <h3 className="question">{question.question}</h3>
