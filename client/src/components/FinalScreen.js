@@ -5,7 +5,6 @@ import { QUERY_SCORES, GET_GAMES, GET_GAME } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import "../assets/css/final.css";
 
-
 function FinalScreen(props) {
   const { loading: loadFirstGame, data: getFirstGame } = useQuery(GET_GAMES);
   const { data: currentGameById, loading: loadCurrentGameById } = useQuery(
@@ -14,7 +13,7 @@ function FinalScreen(props) {
       variables: { id: getFirstGame.games[0]._id },
     }
   );
-  console.log(currentGameById.game);
+  console.log(props.getCurrentGameById);
   console.log(getFirstGame);
 
   const navigate = useNavigate();
@@ -30,12 +29,22 @@ function FinalScreen(props) {
   return (
     <div className="d-flex flex-column">
       <div className="spacer2"></div>
-
-      <h3 className="text-center">Player 1 Score: {props.playerOneScore}</h3>
-      <h3 className="text-center">Player 2 Score: {props.playerTwoScore}</h3>
-
-     // <h3 className="text-center score">Final Score: <span className="score-number">{score}!</span></h3>
-
+      <h3 className="text-center">
+        {props.player1Email}: {props.playerOneScore}
+      </h3>
+      <h3 className="text-center">
+        {props.player2Email}: {props.playerTwoScore}
+      </h3>
+      <h3 className="text-center score">
+        {props.playerOneScore > props.playerTwoScore ? (
+          <h3>{props.player1Email} WON!</h3>
+        ) : props.playerOneScore < props.playerTwoScore ? (
+          <h3>{props.player2Email} WON!</h3>
+        ) : (
+          <h3>A Tie</h3>
+        )}
+        {/* Final Score: <span className="score-number">{score}!</span> */}
+      </h3>
       <div className="spacer2"></div>
       <div className="select-buttons">
         <button

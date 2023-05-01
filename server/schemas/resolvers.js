@@ -75,6 +75,10 @@ const resolvers = {
       console.log(args);
       return await Score.findByIdAndDelete(args._id);
     },
+    deleteGame: async (parent, args, context) => {
+      console.log(args);
+      return await Game.findByIdAndDelete(args._id);
+    },
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

@@ -60,6 +60,7 @@ const typeDefs = gql`
       player2Score: Int
     ): Game
     deleteScore(_id: ID): Score
+    deleteGame(_id: ID): Game
     login(email: String!, password: String!): Auth
   }
 `;

@@ -190,8 +190,10 @@ const CreateGame = () => {
             className="form-input"
             placeholder={loading ? "Loading" : data.user.email}
             name="player1"
-            onClick={choosePlayerOne}
-            value={loading ? "Loading" : data.user.email}
+            // onClick={choosePlayerOne}
+            defaultValue={loading ? "Loading Player One" : data.user.email}
+            disabled
+            readOnly
             required
           />
           <Form.Control.Feedback className="text-faded" type="invalid">
@@ -226,22 +228,24 @@ const CreateGame = () => {
             // onClick={(e) => setSelectedUser(e)}
             onClick={(e) => choosePlayerTwo(e)}
           >
-            {loading
-              ? "loading"
-              : usersData.users.map((userChoice, i) => {
-                  return (
-                    <option
-                      key={i}
-                      type="text"
-                      //   onClick={(e) => choosePlayerTwo(e)}
-                      placeholder="Choose Player 2"
-                      name="player2"
-                      value={userChoice.email}
-                    >
-                      {userChoice.email}
-                    </option>
-                  );
-                })}
+            {loadUsers ? (
+              <option>Loading...</option>
+            ) : (
+              usersData.users.map((userChoice, i) => {
+                return (
+                  <option
+                    key={i}
+                    type="text"
+                    //   onClick={(e) => choosePlayerTwo(e)}
+                    placeholder="Choose Player 2"
+                    name="player2"
+                    value={userChoice.email}
+                  >
+                    {userChoice.email}
+                  </option>
+                );
+              })
+            )}
           </FormControl>
           {/* <select> */}
           {/* </select> */}
@@ -254,10 +258,11 @@ const CreateGame = () => {
         <Form.Control
           type="text"
           className="form-input"
+          disabled
           //   placeholder={data.user.email}
           name="player1Score"
-          onClick={choosePlayerOneScore}
-          value={0}
+          //   onClick={choosePlayerOneScore}
+          defaultValue={0}
         />
 
         <Form.Label className="p-1" htmlFor="player2Score">
@@ -267,8 +272,9 @@ const CreateGame = () => {
           type="text"
           className="form-input"
           name="player2Score"
-          onClick={choosePlayerTwoScore}
-          value={0}
+          //   onClick={choosePlayerTwoScore}
+          defaultValue={0}
+          disabled
         />
         <Button
           className="btn-primary"
