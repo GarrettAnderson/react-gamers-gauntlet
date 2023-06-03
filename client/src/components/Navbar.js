@@ -40,9 +40,9 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand text-white custom-font">
+        {/* <Link to="/" className="navbar-brand text-white custom-font">
           Gamer's Gauntlet
-        </Link>
+        </Link> */}
         <button
           className="navbar-toggler"
           type="button"

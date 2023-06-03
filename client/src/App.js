@@ -11,7 +11,7 @@ import {
 } from "@apollo/client";
 // import Header from "./components/Header";
 // import Footer from "./components/Footer";
-import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -64,41 +64,41 @@ function App() {
 
   return (
     <div className="container">
-      <button className="btn btn-primary btn-dark" onClick={handleDarkMode}>
+      {/* <button className="btn btn-primary btn-dark" onClick={handleDarkMode}>
         {darkMode ? "Light Mode" : "Dark Mode"}
-      </button>
-    <ApolloProvider client={client}>
-      <div></div>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/select"
-            element={
-              <PrivateRoute>
-                <QuizSelect />
-              </PrivateRoute>
-            }
-          />
-          <Route path="/create-game" element={<CreateGame />} />
-          <Route path="/quiz" element={<Question />} />
-          <Route path="/final" element={<FinalScreen />} />
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-      {/* <Footer /> */}
-    </ApolloProvider>
+      </button> */}
+      <ApolloProvider client={client}>
+        <div></div>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/select"
+              element={
+                <PrivateRoute>
+                  <QuizSelect />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/create-game" element={<CreateGame />} />
+            <Route path="/quiz" element={<Question />} />
+            <Route path="/final" element={<FinalScreen />} />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+        {/* <Footer /> */}
+      </ApolloProvider>
     </div>
   );
 }
