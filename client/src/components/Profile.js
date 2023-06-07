@@ -12,6 +12,7 @@ function Profile() {
 
   useEffect(() => {
     if (!scoreLoading && scoreData && userData) {
+      console.log(scoreData);
       // Filter the scores to only include those for the current user
       const filteredScores = scoreData.scores.filter(
         (score) => score.user_id._id === userData.user._id

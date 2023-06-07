@@ -1,16 +1,29 @@
-#root{
+/* #root {
   height: 100vh;
   background-size: cover;
   background-position: center;
   padding-top: 50px;
   background-image: url(../img/GG-Background.png);
+} */
+
+.login {
+  max-width: 350px;
+  margin: 0 auto 20px;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
 }
-  
-  .login{
-    max-width: 350px;
-    margin: 0 auto 20px;
-    border-radius: 4px;
-    background-color: #FFF;
-    padding: 20px;
-    box-sizing: border-box;
-  }
+
+.button {
+  background-color: #79b2da !important;
+  width: 7rem !important;
+}
+
+.card-container {
+  background: transparent;
+}
+
+label {
+  color: #fff;
+}
