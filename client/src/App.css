@@ -154,6 +154,11 @@ h1 {
     margin: 10px;
 }
 
+.m-3 {
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 20px;
+}
 .btn-exit {
     background-color: white;
     color: lightgray;
@@ -191,7 +196,7 @@ button.text-center.btn.text-home {
 
 
 .btn-turq {
-    background-color: #00d8ff;
+    background-color: #0f1731;
     color: white;
 }
 
