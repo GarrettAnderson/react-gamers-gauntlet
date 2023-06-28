@@ -60,7 +60,7 @@ function Home() {
               navigate("/login");
             }}
           >
-            Login
+            LOGIN
           </button>
         )}
       </div>

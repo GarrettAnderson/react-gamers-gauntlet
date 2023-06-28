@@ -39,7 +39,7 @@ body {
 
 html {
     /* background-color: white; */
-    background-image: url(./assets/img/AdobeStock_269814969.jpeg);
+    background-image: url(./assets/img/AdobeStock_494396393.jpeg);
     animation: bounce 130s ease-in-out alternate infinite;
 }
 
@@ -62,8 +62,13 @@ nav {
     font-family: 'Sigmar', cursive;
   }
 
+.nav-item {
+    border-radius: 10px;
+}  
+
 .navbar-nav > li > a {
     font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .gamers-gauntlet-logo {
@@ -112,14 +117,6 @@ h1 {
     font-weight: 300;
 }
 
-/* p {
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    color: #fff;
-}   */
 
 .text-center.welcome {
     font-family: 'Sigmar', cursive;
@@ -142,12 +139,14 @@ h1 {
 .home-buttons {
     display: flex;
     align-items: center;
+    font-family: 'Sigmar', cursive;
 }
 
 .select-buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
 }
 
 .btn {
@@ -205,15 +204,7 @@ button.text-center.btn.text-home {
     color: gray;
     font-size: small;
 }
-/* 
-.page-footer {
-    position: relative;
-    bottom: 0;
-    height: 10rem; */
-    /* background-color: rgb(125, 125, 125, 0.5); */
-/* } */
 
-/* ----------Tutorial--------------------------------------- */
 
 .welcome {
     font-size: xx-large;

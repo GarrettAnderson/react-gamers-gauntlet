@@ -90,8 +90,10 @@ function Settings(props) {
             >
               Add Game
             </button>
+            <div className="spacer2"></div>
             {/* Create a game collection on back end when user clicks start  */}
             <FetchButton text="Start!" />
+            <div className="spacer2"></div>
             <button
               onClick={() => {
                 navigate("/");
